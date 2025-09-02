@@ -36,6 +36,35 @@ CREATE TABLE public."Attendance" (
 ALTER TABLE public."Attendance" OWNER TO postgres;
 
 --
+-- Name: Booking; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Booking" (
+    booking_id bigint NOT NULL,
+    membership_id bigint NOT NULL,
+    resource_id bigint NOT NULL,
+    start_time timestamp without time zone NOT NULL,
+    end_time timestamp without time zone NOT NULL,
+    booked_by_guest boolean NOT NULL
+);
+
+
+ALTER TABLE public."Booking" OWNER TO postgres;
+
+--
+-- Name: Computers; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Computers" (
+    computer_id bigint NOT NULL,
+    status boolean NOT NULL,
+    last_used timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public."Computers" OWNER TO postgres;
+
+--
 -- Name: Inventory; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -51,6 +80,20 @@ CREATE TABLE public."Inventory" (
 
 
 ALTER TABLE public."Inventory" OWNER TO postgres;
+
+--
+-- Name: Rooms; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Rooms" (
+    room_id bigint NOT NULL,
+    room_type text NOT NULL,
+    status boolean NOT NULL,
+    last_used_date date NOT NULL
+);
+
+
+ALTER TABLE public."Rooms" OWNER TO postgres;
 
 --
 -- Name: Staff; Type: TABLE; Schema: public; Owner: postgres
@@ -89,10 +132,34 @@ COPY public."Attendance" ("Staff_id", "Check_in_time", "Check_out_time", "Date")
 
 
 --
+-- Data for Name: Booking; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Booking" (booking_id, membership_id, resource_id, start_time, end_time, booked_by_guest) FROM stdin;
+\.
+
+
+--
+-- Data for Name: Computers; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Computers" (computer_id, status, last_used) FROM stdin;
+\.
+
+
+--
 -- Data for Name: Inventory; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public."Inventory" (item_id, item_name, quantity_on_hand, unit_of_measure, restock_threshold, last_restocked_date, "Storagechange_bill_id") FROM stdin;
+\.
+
+
+--
+-- Data for Name: Rooms; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Rooms" (room_id, room_type, status, last_used_date) FROM stdin;
 \.
 
 
@@ -120,11 +187,35 @@ ALTER TABLE ONLY public."Attendance"
 
 
 --
+-- Name: Booking Booking_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Booking"
+    ADD CONSTRAINT "Booking_pkey" PRIMARY KEY (booking_id);
+
+
+--
+-- Name: Computers Computers_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Computers"
+    ADD CONSTRAINT "Computers_pkey" PRIMARY KEY (computer_id);
+
+
+--
 -- Name: Inventory Inventory_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public."Inventory"
     ADD CONSTRAINT "Inventory_pkey" PRIMARY KEY (item_id);
+
+
+--
+-- Name: Rooms Rooms_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Rooms"
+    ADD CONSTRAINT "Rooms_pkey" PRIMARY KEY (room_id);
 
 
 --
