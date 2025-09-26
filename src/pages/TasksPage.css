@@ -1,0 +1,38 @@
+/* src/pages/TasksPage.css */
+.task-list {
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.task-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.task-list th, .task-list td {
+  text-align: left;
+  padding: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.task-list th {
+  font-weight: bold;
+}
+
+.status-in-progress {
+  background-color: var(--primary-color);
+  color: var(--text-light-color);
+  padding: 5px 15px;
+  border-radius: 20px;
+}
+
+.action-button {
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}

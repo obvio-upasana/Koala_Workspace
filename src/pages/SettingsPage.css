@@ -1,0 +1,51 @@
+/* src/pages/SettingsPage.css */
+.settings-options {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.setting-item {
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.setting-item .icon-container {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  font-size: 24px;
+  color: var(--primary-color);
+}
+
+.setting-item h4 {
+  font-size: 1.2em;
+  margin: 0;
+}
+
+.setting-item p {
+  margin: 5px 0 0 0;
+  color: #777;
+}
+
+.setting-actions {
+  margin-left: auto;
+}
+
+.update-button, .contact-button {
+  background-color: var(--primary-color);
+  color: var(--text-light-color);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}

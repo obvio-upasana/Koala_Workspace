@@ -1,0 +1,98 @@
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 30px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 20px;
+  grid-template-areas:
+    "task announcement announcement"
+    "calendar calendar shift-info"
+    "calendar calendar profile";
+}
+
+.task-widget { grid-area: task; }
+.announcement-widget { grid-area: announcement; }
+.calendar-widget { grid-area: calendar; }
+.shift-info-widget { grid-area: shift-info; }
+.profile-widget { grid-area: profile; }
+
+/* Widget specific styling */
+.announcement-widget h3,
+.task-widget h3,
+.shift-info-widget h3,
+.profile-widget h3,
+.calendar-widget h3 {
+  margin-top: 0;
+  font-size: 1.2em;
+}
+
+.task-widget ul {
+  list-style: none;
+  padding: 0;
+}
+
+.task-widget li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.task-widget li input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.shift-details {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.shift-details h4 {
+  margin: 0 0 5px 0;
+  font-size: 1em;
+  color: #888;
+}
+
+.shift-details p {
+  margin: 0;
+  font-weight: bold;
+}
+
+.leave-request {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  gap: 5px;
+}
+
+.calendar-grid span {
+  font-weight: bold;
+  color: #888;
+}
+
+.calendar-day {
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.calendar-day.current-day {
+  background-color: var(--primary-purple);
+  color: var(--card-white);
+  font-weight: bold;
+}

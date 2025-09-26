@@ -1,0 +1,119 @@
+.login-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  font-family: Arial, sans-serif;
+}
+
+/* Left Section */
+.left-section {
+  flex: 1;
+  background-color: #18243b;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-section h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+/* Right Section */
+.right-section {
+  flex: 1;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form h2 {
+  margin-bottom: 10px;
+}
+
+.welcome {
+  color: #444;
+}
+
+.welcome-text {
+  margin-bottom: 20px;
+  color: #444;
+}
+
+/* Inputs */
+.login-form input {
+  margin-bottom: 15px;
+  padding: 12px;
+  border: none;
+  background: #e0e0e0;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #000;              
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.login-form input::placeholder {
+  color: #555;             
+}
+
+.login-form input:focus {
+  border: 2px solid #2c3546; 
+  background: #f5f5f5;
+}
+
+/* Remember Me */
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 6px;                 
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  color: #000;
+}
+
+.remember-me input {
+  margin: 0;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+/* Button */
+.login-form button {
+  background: #2c3546;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.login-form button:hover {
+  background: #1e2633;
+}
+
+/* Forgot password link */
+.forgot-link {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #2c3546;
+  text-decoration: none;
+  text-align: center;
+  transition: color 0.2s ease-in-out;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+  color: #000;
+}
