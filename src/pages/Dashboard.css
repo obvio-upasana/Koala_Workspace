@@ -73,26 +73,38 @@
   align-items: center;
 }
 
-.calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  text-align: center;
-  gap: 5px;
+/* Calendar styling */
+.calendar-widget {
+  grid-area: calendar;
+  background: var(--card-white);
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
-.calendar-grid span {
-  font-weight: bold;
-  color: #888;
+.calendar-widget h3 {
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  color: var(--primary-purple);
 }
 
-.calendar-day {
-  padding: 10px;
-  border-radius: 50%;
-  cursor: pointer;
+/* FullCalendar overrides */
+.fc {
+  font-family: inherit;
 }
 
-.calendar-day.current-day {
+.fc .fc-toolbar-title {
+  font-size: 1rem;
+  color: #333;
+}
+
+.fc .fc-daygrid-day-number {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.fc .fc-day-today {
   background-color: var(--primary-purple);
   color: var(--card-white);
-  font-weight: bold;
+  border-radius: 4px;
 }
