@@ -1,63 +1,141 @@
-/* src/pages/ClientsPage.css */
-.client-info-card, .booking-list {
-  background-color: var(--card-bg);
+/* Card layout */
+.widget {
+  background-color: #F1F7ED;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   margin-bottom: 20px;
+  border: 1px solid #243E36;   /* or any color you want */
+  overflow: hidden;
+}
+.widget button {
+  margin-top: 10px;
+  margin-right: 0px;   /* ✅ spacing from right border */
 }
 
-.client-info-card h3 {
+
+/* Client info card with arrows */
+.client-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.client-header h3 {
   font-size: 1.5em;
-  margin-top: 0;
+  margin: 0;
 }
 
-.notes-section {
-  margin-top: 20px;
-}
-
-.notes-tabs button {
-  background-color: var(--background-light);
-  border: 1px solid var(--border-color);
-  padding: 10px 20px;
-  border-bottom: none;
+.nav-arrows button {
+  background: var(--primary-color, #243E36);
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  margin-left: 5px;
   cursor: pointer;
 }
-
-.notes-tabs button.active {
-  background-color: var(--card-bg);
-  border-bottom: 1px solid var(--card-bg);
+.nav-arrows button:hover {
+  background: #1d332c;
 }
 
-textarea {
-  width: calc(100% - 40px);
-  min-height: 150px;
-  border: 1px solid var(--border-color);
-  border-radius: 5px;
-  padding: 20px;
-  resize: vertical;
-  margin-top: -1px;
+/* Tab buttons */
+.tab-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background: #e9ecef;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s;
+  border-radius: 0;
+}
+.tab-button.active {
+  background: var(--primary-color, #243E36);
+  color: #fff;
+  border-color: var(--primary-color, #243E36);
+}
+
+/* Notes editor */
+.notes-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.notes-editor {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+}
+
+.notes-textarea {
+  border: 1px solid #ccc;
+  border-radius: 6px; /* small curve inside */
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 100px;
 }
 
 .save-button {
-  background-color: var(--primary-color);
-  color: var(--text-light-color);
+  align-self: flex-end;
+  background-color: var(--primary-color, #243E36);
+  color: #fff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  float: right;
+  padding: 8px 16px;
+  border-radius: 6px;
   cursor: pointer;
-  margin-top: 15px;
+  transition: background 0.2s;
+}
+.save-button:hover {
+  background-color: #1d332c;
 }
 
+/* Last saved note */
+.last-note {
+  flex: 2;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 0.9rem;
+  color: #333;
+}
+.last-note h4 {
+  margin: 0 0 5px 0;
+  font-size: 1rem;
+}
+
+/* Documents tab */
+.documents-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.document-link {
+  color: var(--primary-color, #243E36);
+  text-decoration: none;
+  font-weight: 500;
+}
+.document-link:hover {
+  text-decoration: underline;
+}
+
+/* Booking table */
 .booking-list table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 15px;
 }
-
 .booking-list th, .booking-list td {
   text-align: left;
   padding: 10px;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid #ccc;
 }
