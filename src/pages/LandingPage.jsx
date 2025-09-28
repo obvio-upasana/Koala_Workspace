@@ -19,7 +19,10 @@ export default function LandingPage(){
     { key: 'play', title: 'Play Room', short: 'Recreation', detail: 'Games and unwind area for creativity breaks.' },
     { key: 'nap', title: 'Nap Area', short: 'Resting pods', detail: 'Quiet sleeping/resting area for power naps.' },
     { key: 'cafe', title: 'Cafeteria', short: 'Open to all', detail: 'Casual cafeteria with snacks and beverages.' },
-    { key: 'offices', title: 'Contract Offices', short: 'Private offices', detail: 'Dedicated offices leased to companies.' }
+    { key: 'offices', title: 'Contract Offices', short: 'Private offices', detail: 'Dedicated offices leased to companies.' },
+    { key: 'stationeries', title: 'Stationery Room', short: 'Temporary use', detail: 'If any stationery needed for temporary or office use.' },
+    { key: 'xerox', title: 'Xerox Machine', short: 'B/W and Color', detail: 'Xerox machines for members along with Shredding machine.' },
+    { key: 'alltimeopen', title: '24x7 open', short: 'Never stop working', detail: 'Workspace opened 24x7 for seamless anytime work.' },
   ];
 
   const PLANS = [
@@ -128,5 +131,6 @@ export default function LandingPage(){
     </div>
   );
 }
+
 
 
