@@ -60,12 +60,10 @@ import Sidebar from '../components/Sidebar';
 import './ClientsPage.css';
 
 const ClientsPage = () => {
-    // State to manage which tab is active
-    const [activeTab, setActiveTab] = useState('notes'); 
-    // State to hold the content of the meeting notes
+    const [activeTab, setActiveTab] = useState('notes');
     const [meetingNotes, setMeetingNotes] = useState('');
+    const [lastNote, setLastNote] = useState('');
     
-    // Example data for a client. In a real app, this would come from an API.
     const client = {
         name: "Acme Corp",
         contact: "123-456-7890",
@@ -74,21 +72,22 @@ const ClientsPage = () => {
         address: "123 Business Lane, Cityville"
     };
     
-    // Example booking data
     const bookings = [
         { task: "Meeting with Mr. Smith", status: "Confirmed", notes: "Need to prepare contract." },
         { task: "Facility Tour", status: "Pending", notes: "Awaiting confirmation from client." },
-       
     ];
 
-    // This function runs when the "Save Note" button is clicked
+    const documents = [
+        { name: "Contract.pdf", url: "#" },
+        { name: "Proposal.docx", url: "#" },
+        { name: "Invoice.xlsx", url: "#" },
+    ];
+
     const handleSaveNote = () => {
-        // Here, you would typically send the 'meetingNotes' data to your backend API.
-        // For now, we'll just show an alert to confirm it's working.
         if (meetingNotes.trim() !== '') {
-            console.log("Saving the following note:", meetingNotes);
+            setLastNote(meetingNotes);
+            setMeetingNotes('');
             alert("Note saved successfully!");
-            setMeetingNotes(''); // Clear the textarea after saving
         } else {
             alert("Please enter a note before saving.");
         }
@@ -97,23 +96,30 @@ const ClientsPage = () => {
     const renderTabContent = () => {
         if (activeTab === 'notes') {
             return (
-                <div className="notes-content">
-                    <textarea
-                        placeholder="Log meeting notes..."
-                        className="notes-textarea"
-                        value={meetingNotes}
-                        onChange={(e) => setMeetingNotes(e.target.value)}
-                    ></textarea>
-                    {/* The onClick event is now attached to the button */}
-                    <button className="save-button" onClick={handleSaveNote}>Save Note</button>
+                <div className="notes-section">
+                    <div className="notes-editor">
+                        <textarea
+                            placeholder="Log meeting notes..."
+                            className="notes-textarea"
+                            value={meetingNotes}
+                            onChange={(e) => setMeetingNotes(e.target.value)}
+                        ></textarea>
+                        <button className="save-button" onClick={handleSaveNote}>Save Note</button>
+                    </div>
+                    {lastNote && (
+                        <div className="last-note">
+                            <h4>Last Saved Note:</h4>
+                            <p>{lastNote}</p>
+                        </div>
+                    )}
                 </div>
             );
         } else if (activeTab === 'documents') {
             return (
-                <div className="documents-content">
-                    <p>Upload new documents here.</p>
-                    <button className="upload-button">Upload File</button>
-                    {/* Add a list of uploaded documents here */}
+                <div className="documents-list">
+                    {documents.map((doc, idx) => (
+                        <a key={idx} href={doc.url} className="document-link">{doc.name}</a>
+                    ))}
                 </div>
             );
         }
@@ -125,16 +131,22 @@ const ClientsPage = () => {
             <div className="main-content">
                 <h1 className="page-title">Clients & Workspace</h1>
                 
-                <div className="client-header-card widget">
-                    <div className="client-info">
+                {/* Client Info Card with navigation arrows */}
+                <div className="client-info-card widget">
+                    <div className="client-header">
                         <h3>{client.name}</h3>
-                        <p><strong>Contact:</strong> {client.contact}</p>
-                        <p><strong>Email:</strong> {client.email}</p>
-                        <p><strong>Company Name:</strong> {client.company}</p>
-                        <p><strong>Address:</strong> {client.address}</p>
+                        <div className="nav-arrows">
+                            <button>{"<"}</button>
+                            <button>{">"}</button>
+                        </div>
                     </div>
+                    <p><strong>Contact:</strong> {client.contact}</p>
+                    <p><strong>Email:</strong> {client.email}</p>
+                    <p><strong>Company Name:</strong> {client.company}</p>
+                    <p><strong>Address:</strong> {client.address}</p>
                 </div>
 
+                {/* Notes / Documents Card */}
                 <div className="client-details-card widget">
                     <div className="tab-buttons">
                         <button 
@@ -153,6 +165,7 @@ const ClientsPage = () => {
                     {renderTabContent()}
                 </div>
 
+                {/* Booking Card */}
                 <div className="booking-list widget">
                     <h3>Today's Booking</h3>
                     <table>
