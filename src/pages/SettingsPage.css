@@ -12,6 +12,7 @@
   padding: 20px;
   display: flex;
   align-items: center;
+  border: 1px solid #243E36;
 }
 
 .setting-item .icon-container {
